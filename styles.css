@@ -1,16 +1,16 @@
-body {
-}
 .door {
-  display: inline-block;
-  border: solid black;
-  width: 100px;
-  height: 100px;
+  display: inline-flex;
+  background-image: url("door.png");
+  background-size: contain;
+  width: 190px;
+  height: 300px;
   margin: 20px;
 }
 
 .selected {
-  border: solid red;
+  border: solid black 5px;
 }
+
 img {
   height: 100px;
   width: 100px;

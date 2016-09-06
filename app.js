@@ -1,8 +1,6 @@
 var montyHall = angular.module('montyHall', []);
 montyHall.controller('gameController', ['$scope', function(s) {
 
-s.handle='';
-
   var randBetween = function(min,max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
@@ -52,9 +50,9 @@ for (var i = 0; i < doorList.length; i++) {
 var openDoor = function(door) {
   door["isOpen"] = 1;
   if (door["isPrize"] == 1) {
-    $('#' + door["doorName"]).html('<img src="http://www.usa.philips.com/c-dam/b2c/category-pages/lighting/car-lights/master/footer/nafta-car.png"></img>')
+    $('#' + door["doorName"]).append('<img src="http://www.usa.philips.com/c-dam/b2c/category-pages/lighting/car-lights/master/footer/nafta-car.png"></img>')
   } else {
-    $('#' + door["doorName"]).html('<img src="http://animalia-life.com/data_images/goat/goat4.jpg"></img>')
+    $('#' + door["doorName"]).append('<img src="http://animalia-life.com/data_images/goat/goat4.jpg"></img>')
   }
 }
 
@@ -82,7 +80,8 @@ $(".door").click(function(event) {
     openDoor(s[event.target.id]);
     if (event.target.id == prizeDoorId) {
       console.log("you won!");
-      $("#stuck").append(+1);
+      // $("#stuck").append(+1);
+      s.score = (+1);
     } else {
       console.log("You lost.");
     }
@@ -90,7 +89,9 @@ $(".door").click(function(event) {
     openDoor(s[doNotRevealDoorName]);
     if (event.target.id != prizeDoorId) {
       console.log("you won!");
-      $("#switched").append(+1);
+      // $("#switched").append(+1);
+      s.score = (+1);
+
     } else {
       console.log("You lost.");
     }
