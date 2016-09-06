@@ -1,0 +1,27 @@
+body {
+}
+.door {
+  display: inline-block;
+  border: solid black;
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+}
+
+.selected {
+  border: solid red;
+}
+img {
+  height: 100px;
+  width: 100px;
+}
+
+#scoreBoard {
+  height: 50px;
+  width: 300px;
+  border: solid green;
+}
+
+#stuck, #switched {
+  background-color: yellow;
+}

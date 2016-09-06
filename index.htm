@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en-us" ng-app="montyHall">
+<head>
+  <title>The Monty Hall</title>
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="https://code.angularjs.org/1.5.8/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.5.8/angular-cookies.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+  <h1>The Monty Hall Problem</h1>
+<div id="gameStage" ng-controller="gameController">
+  <div id="scoreBoard"><p ng-model="handle" id="switched">Switched: {{handle}}</p><p id="stuck">Stuck: </p></div>
+</div>
+
+</body>
+</html>
