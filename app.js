@@ -23,7 +23,7 @@ var switchPlus = function(scopeObject) {
     this.isPrize = isPrize;
   };
 
-var doorCount = 3;
+var doorCount = prompt("How many doors would you like to use?");
 var doorList = [];
 var prizeDoorNumber = randBetween(1,doorCount);
 
@@ -130,7 +130,14 @@ var tallyResults = function() {
       gameWon = 1;
       }
     }
-    console.log(gameWon);
+    winOrLose(gameWon);
+}
+var winOrLose = function(gameWon) {
+  if (gameWon == 1) {
+    alert("You won!");
+  } else {
+    alert("You lost.");
+  }
 }
 
 }]);
