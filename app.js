@@ -78,43 +78,59 @@ $(".door").click(function(event) {
 
 var revealGoat = function(selectedDoor) {
 
-  var candidates = [];
+//if the door is not the prize door or selected, push it to revealCandidates array:
+  var revealCandidates = [];
   for (var i = 0; i < doorCount; i++) {
     if (doorList[i]["isPrize"] == 0 &&
     s[doorList[i]["doorName"]]["isSelected"] == 0) {
-      candidates.push(doorList[i]["doorName"])
+      revealCandidates.push(doorList[i]["doorName"])
     }
   }
-  var doNotRevealIndex = randBetween(0, candidates.length-1);
-  var doNotRevealDoorName = candidates[doNotRevealIndex];
+
+  //have potential doors now, so choose one at random to not reveal:
+  var doNotRevealIndex = randBetween(0, revealCandidates.length-1);
+  var doNotRevealDoorName = revealCandidates[doNotRevealIndex];
+  //The prize door must not be revealed:
   if (selectedDoor["isPrize"] != 1 ) {
     doNotRevealDoorName = prizeDoorId
   }
-
+  //loop through door objects in scope. If it's not selected, and not flagged to leave shut, open it:
   for (var i = 0; i < doorCount; i++) {
     if (s[doorList[i]["doorName"]]["isSelected"] != 1 && doorList[i]["doorName"] != doNotRevealDoorName) {
       openDoor(s[doorList[i]["doorName"]])
     }
   }
-  var userInput = prompt("would you like to STICK with your current door or SWITCH to the other option?");
-  if (userInput == "STICK") {
-    openDoor(selectedDoor);
-    if (selectedDoor["isPrize"] == 1) {
-      console.log("you won!");
-     stickPlus(s);
-    } else {
-      console.log("You lost.");
-    }
-  } else {
-    openDoor(s[doNotRevealDoorName]);
-    if (doNotRevealDoorName == prizeDoorId) {
-      console.log("you won!");
-     switchPlus(s);
 
-    } else {
-      console.log("You lost.");
-    }
+var otherClosedDoor = s[doNotRevealDoorName];
+//calling function that offers the user to switch to the other closed door or stick with the selected door:
+switchOffer(selectedDoor, otherClosedDoor);
+}
+
+var switchOffer = function(selectedDoor, otherClosedDoor) {
+
+  var userInput = prompt("would you like to STICK with your current door or SWITCH to the other option?");
+  if (userInput.toUpperCase() == "STICK") {
+    openDoor(selectedDoor);
   }
+  else if (userInput.toUpperCase() == "SWITCH") {
+    openDoor(otherClosedDoor);
+  }
+  else {
+   switchOffer(selectedDoor, otherClosedDoor);
+  }
+
+  tallyResults();
+}
+
+var gameWon = 0;
+
+var tallyResults = function() {
+  for (var i = 0; i < doorCount; i++) {
+    if (s[doorList[i]["doorName"]]["isOpen"] == 1 && s[doorList[i]["doorName"]]["isPrize"] == 1) {
+      gameWon = 1;
+      }
+    }
+    console.log(gameWon);
 }
 
 }]);
