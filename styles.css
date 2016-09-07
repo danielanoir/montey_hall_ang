@@ -1,4 +1,8 @@
 .door {
+  font-size: 25px;
+  align-items: flex-start;
+  justify-content: center;
+  font-weight: bolder;
   display: inline-flex;
   background-image: url("door.png");
   background-size: contain;
@@ -20,8 +24,10 @@ img {
   height: 50px;
   width: 300px;
   border: solid green;
+  margin: 50px;
+  padding: 10px;
 }
 
 #stuck, #switched {
-  background-color: yellow;
+  margin: 5px;
 }

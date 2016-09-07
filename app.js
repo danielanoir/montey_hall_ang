@@ -1,6 +1,16 @@
 var montyHall = angular.module('montyHall', []);
 montyHall.controller('gameController', ['$scope', function(s) {
 
+s["stickWins"] = 0;
+s["switchWins"] = 0;
+
+var stickPlus = function(scopeObject) {
+  scopeObject["stickWins"] += 1;
+}
+var switchPlus = function(scopeObject) {
+  scopeObject["switchWins"] += 1;
+}
+
   var randBetween = function(min,max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
@@ -24,27 +34,32 @@ for (var i = 1; i <= doorCount; i++) {
   if (i == prizeDoorNumber) {
       isPrize = 1;
   }
-
   var doorName = "door" + i.toString();
   var doorLabel = "Door " + i.toString();
   s[doorName] = new Door(doorName, doorLabel, isOpen,isSelected,isPrize);
   doorList.push(s[doorName]);
 }
 
-var selectDoor = function(door) {
-  door["isSelected"] = 1;
-  $('#' + door["doorName"]).addClass("selected");
-}
-
-for (var i = 0; i < doorList.length; i++) {
+for (var i = 0; i < doorCount; i++) {
   var element = $("<div id='" + doorList[i]["doorName"] + "' class='door'></div>").text(doorList[i]["doorLabel"]);
   $("#gameStage").append(element);
 }
 
-for (var i = 0; i < doorList.length; i++) {
+for (var i = 0; i < doorCount; i++) {
   if (doorList[i]["isPrize"] == 1) {
     var prizeDoorId = doorList[i]["doorName"]
   }
+}
+
+var selectDoor = function(door) {
+  for (var i = 0; i < doorCount; i++) {
+    $('#' + doorList[i]["doorName"]).removeClass("selected")
+    s[doorList[i]["doorName"]]["isSelected"] = 0;
+  }
+  door["isSelected"] = 1;
+  $('#' + door["doorName"]).addClass("selected");
+  var selectedDoor = door;
+  revealGoat(selectedDoor);
 }
 
 var openDoor = function(door) {
@@ -57,49 +72,49 @@ var openDoor = function(door) {
 }
 
 $(".door").click(function(event) {
-  selectDoor(s[event.target.id]);
+  var clickedDoor = s[event.target.id];
+  selectDoor(clickedDoor);
+});
+
+var revealGoat = function(selectedDoor) {
 
   var candidates = [];
-  for (var i = 0; i < doorList.length; i++) {
-    if (doorList[i]["isPrize"] == 0 && doorList[i]["isSelected"] == 0) {
+  for (var i = 0; i < doorCount; i++) {
+    if (doorList[i]["isPrize"] == 0 &&
+    s[doorList[i]["doorName"]]["isSelected"] == 0) {
       candidates.push(doorList[i]["doorName"])
     }
   }
   var doNotRevealIndex = randBetween(0, candidates.length-1);
   var doNotRevealDoorName = candidates[doNotRevealIndex];
-  if (prizeDoorId != event.target.id) {
+  if (selectedDoor["isPrize"] != 1 ) {
     doNotRevealDoorName = prizeDoorId
   }
-  for (var i = 0; i < doorList.length; i++) {
-    if (doorList[i]["isSelected"] != 1 && doorList[i]["doorName"] != doNotRevealDoorName) {
+
+  for (var i = 0; i < doorCount; i++) {
+    if (s[doorList[i]["doorName"]]["isSelected"] != 1 && doorList[i]["doorName"] != doNotRevealDoorName) {
       openDoor(s[doorList[i]["doorName"]])
     }
   }
   var userInput = prompt("would you like to STICK with your current door or SWITCH to the other option?");
   if (userInput == "STICK") {
-    openDoor(s[event.target.id]);
-    if (event.target.id == prizeDoorId) {
+    openDoor(selectedDoor);
+    if (selectedDoor["isPrize"] == 1) {
       console.log("you won!");
-      // $("#stuck").append(+1);
-      s.score = (+1);
+     stickPlus(s);
     } else {
       console.log("You lost.");
     }
   } else {
     openDoor(s[doNotRevealDoorName]);
-    if (event.target.id != prizeDoorId) {
+    if (doNotRevealDoorName == prizeDoorId) {
       console.log("you won!");
-      // $("#switched").append(+1);
-      s.score = (+1);
+     switchPlus(s);
 
     } else {
       console.log("You lost.");
     }
   }
-
-});
-
-// console.log(s);
-// s.doorLabel = s.door1["doorLabel"]
+}
 
 }]);
