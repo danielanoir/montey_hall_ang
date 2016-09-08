@@ -25,8 +25,7 @@ var switchPlus = function(scopeObject) {
 
 var doorCount = 3;
 // var doorCount = prompt("number of doors:");
-console.log(doorCount);
-// var doorCount = prompt("How many doors would you like to use?");
+// console.log(doorCount);
 var doorList = [];
 var prizeDoorNumber = randBetween(1,doorCount);
 
@@ -44,7 +43,7 @@ for (var i = 1; i <= doorCount; i++) {
 }
 
 for (var i = 0; i < doorCount; i++) {
-  var element = $("<div id='" + doorList[i]["doorName"] + "' class='door'></div>").text(doorList[i]["doorLabel"]);
+  var element = $("<div id='" + doorList[i]["doorName"] + "' class='door'></div>");
   $("#gameStage").append(element);
 }
 
@@ -80,7 +79,6 @@ $(".door").click(function(event) {
 });
 
 var revealGoat = function(selectedDoor) {
-
 //if the door is not the prize door or selected, push it to revealCandidates array:
   var revealCandidates = [];
   for (var i = 0; i < doorCount; i++) {
@@ -89,7 +87,6 @@ var revealGoat = function(selectedDoor) {
       revealCandidates.push(doorList[i]["doorName"])
     }
   }
-
   //have potential doors now, so choose one at random to not reveal:
   var doNotRevealIndex = randBetween(0, revealCandidates.length-1);
   var doNotRevealDoorName = revealCandidates[doNotRevealIndex];

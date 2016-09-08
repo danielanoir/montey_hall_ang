@@ -25,7 +25,9 @@ h1 {
 }
 
 .door {
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-repeat: no-repeat;
@@ -42,12 +44,13 @@ h1 {
 }
 
 .selected {
-  border: solid black 5px;
+  border: solid orange 5px;
 }
 
 img {
-  height: 100px;
-  width: 100px;
+  height: 300px;
+  width: 190px;
+  background-color: white;
 }
 
 .form {
