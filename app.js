@@ -68,7 +68,7 @@ var selectDoor = function(door) {
 var openDoor = function(door) {
   door["isOpen"] = 1;
   if (door["isPrize"] == 1) {
-    $('#' + door["doorName"]).append('<img src="http://www.usa.philips.com/c-dam/b2c/category-pages/lighting/car-lights/master/footer/nafta-car.png"></img>')
+    $('#' + door["doorName"]).append('<img src="car.jpg"></img>')
   } else {
     $('#' + door["doorName"]).append('<img src="goat.jpg"></img>')
   }
