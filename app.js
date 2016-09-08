@@ -23,7 +23,10 @@ var switchPlus = function(scopeObject) {
     this.isPrize = isPrize;
   };
 
-var doorCount = prompt("How many doors would you like to use?");
+var doorCount = 3;
+// var doorCount = prompt("number of doors:");
+console.log(doorCount);
+// var doorCount = prompt("How many doors would you like to use?");
 var doorList = [];
 var prizeDoorNumber = randBetween(1,doorCount);
 
@@ -67,7 +70,7 @@ var openDoor = function(door) {
   if (door["isPrize"] == 1) {
     $('#' + door["doorName"]).append('<img src="http://www.usa.philips.com/c-dam/b2c/category-pages/lighting/car-lights/master/footer/nafta-car.png"></img>')
   } else {
-    $('#' + door["doorName"]).append('<img src="http://animalia-life.com/data_images/goat/goat4.jpg"></img>')
+    $('#' + door["doorName"]).append('<img src="goat.jpg"></img>')
   }
 }
 

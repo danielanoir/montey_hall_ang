@@ -1,9 +1,34 @@
-.door {
-  font-size: 25px;
-  align-items: flex-start;
+body {
+  background-color: white;
+  background-image: url("checkeredfloor.jpg");
+  background-attachment: fixed;
+  background-repeat: repeat-x;
+  background-position: bottom;
+  margin-bottom: 0px;
+}
+
+#gameStage {
+  display: flex;
+  align-items: center;
   justify-content: center;
+
+}
+
+h1 {
+  text-align: center;
+  /*display: flex;*/
+  color: #690A00;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.door {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  color: #E0DFDE;
+  font-family: 'Shadows Into Light', cursive;
   font-weight: bolder;
-  display: inline-flex;
   background-image: url("door.png");
   background-size: contain;
   width: 190px;
@@ -20,6 +45,11 @@ img {
   width: 100px;
 }
 
+.form {
+  height: 50px;
+  width: 300px;
+  border: solid red;
+}
 #scoreBoard {
   height: 50px;
   width: 300px;
