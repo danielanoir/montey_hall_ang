@@ -39,18 +39,23 @@ h1 {
   width: 190px;
   height: 300px;
   margin: 20px;
+}
+
+.closed {
   background-image: url("door.png");
-  border: solid black 5px;
+}
+
+.goat {
+  background-image: url("goat.jpg");
+
+}
+
+.prize {
+  background-image: url("car.jpg");
 }
 
 .selected {
   border: solid orange 5px;
-}
-
-img {
-  height: 300px;
-  width: 190px;
-  background-color: white;
 }
 
 .form {
