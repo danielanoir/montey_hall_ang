@@ -18,9 +18,10 @@ body {
 }
 
 .explanation {
+  background-color: white;
   height: 400px;
-  overflow-y: scroll;
-  height: 400px;
+  min-height: 100px;
+  overflow-y: auto;
   text-align: center;
   color: #2a2b2b;
   font-family: 'Trirong', serif;
