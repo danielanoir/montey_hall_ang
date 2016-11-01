@@ -135,7 +135,7 @@ function startGame(){
 
   var switchOffer = function(selectedDoor, otherClosedDoor) {
 
-    var userInput = prompt("Would you like to STICK with your current door or SWITCH to the other option?");
+    var userInput = prompt("I'm opening one of the doors with a goat behind it. Would you like to STICK with your current door or SWITCH to the other option?");
     if (userInput.toUpperCase() == "STICK") {
       openDoor(selectedDoor);
     }
@@ -160,6 +160,10 @@ function startGame(){
   };
 
   var winOrLose = function(gameWon) {
+    for (var i = 0; i < doorCount; i++) {
+      $('#' + doorList[i]["doorName"]).removeClass("selected")
+      s[doorList[i]["doorName"]]["isSelected"] = 0;
+    }
     var confirmMessage = "";
     if (gameWon == 1) {
       confirmMessage = "You won! ";
