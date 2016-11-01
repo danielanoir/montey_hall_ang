@@ -135,7 +135,7 @@ function startGame(){
 
   var switchOffer = function(selectedDoor, otherClosedDoor) {
 
-    var userInput = prompt("I'm opening one of the doors with a goat behind it. Would you like to STICK with your current door or SWITCH to the other option?");
+    var userInput = prompt("I'm opening one of the doors with a goat behind it. Would you like to STICK with your current door or SWITCH to the other option? (type 'stick' or 'switch')");
     if (userInput.toUpperCase() == "STICK") {
       openDoor(selectedDoor);
     }
