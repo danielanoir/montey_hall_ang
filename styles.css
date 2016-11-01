@@ -21,19 +21,19 @@ body {
   height: 400px;
   overflow-y: scroll;
   height: 400px;
+  text-align: center;
   color: #2a2b2b;
   font-family: 'Trirong', serif;
 }
 h1 {
-  text-align: center;
-  font-size: 30px;
+  font-size: 35px;
   margin-bottom: 10px;
 }
 
 
 h3 {
   text-align: center;
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 20px;
 }
 
@@ -69,7 +69,9 @@ h3 {
 }
 
 .selected {
-  border: solid #2aa899 10px;
+  border: solid #07ba87 7px;
+  border-radius: 20px;
+  background-color: #07ba87;
 }
 
 .form {
