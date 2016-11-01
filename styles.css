@@ -71,7 +71,7 @@ h3 {
 
 .selected {
   border: solid #07ba87 7px;
-  border-radius: 20px;
+  border-radius: 2px;
   background-color: #07ba87;
 }
 
