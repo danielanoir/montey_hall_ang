@@ -18,6 +18,22 @@ $(window).load(function(){
 
 $(document).ready(function(){
 
+var textArray = [
+"If you switch doors you will win 2/3 of the time! It's a fact!",
+"Welcome to the game!",
+"The Monty Hall problem is a probability puzzle. Here's how it works...",
+"There are three doors. Two of the doors have goats behind them, and one has a prize.",
+"Pick a door.",
+"A door, other than the door you chose, will open to show you a goat.",
+"Do you stick with your original selection or switch to the other unopened door?"
+];
+var counter = 0;
+
+$("#button").click(function changeDialog() {
+  counter = (counter + 1) % textArray.length;
+  $("#dialogBoxDiv").html(textArray[counter]);
+});
+
 var i = 0;
 s["stickWins"] = 0;
 s["switchWins"] = 0;
