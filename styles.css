@@ -8,13 +8,20 @@ body {
   margin-bottom: 0px;
 }
 
-#dialogBoxDiv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#button {
+  align-self: flex-end;
+  margin-bottom: 20px;
+}
+.dialogContainer {
   min-height: 20vh;
   min-width: 40vh;
   font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border: solid red;
 }
 
 #gameStage {
